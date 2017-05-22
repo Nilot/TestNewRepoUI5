@@ -1,0 +1,29 @@
+image: node:latest
+pipelines:
+   default:
+       - step:
+           script:
+               - npm --version
+               - npm install -g grunt-cli bower
+               - npm install
+               - bower install --allow-root
+               - grunt build
+               - tar -zcvf dist.tar.gz dist
+               - curl -s -X POST https://x-token-auth:$AUTH_TOKEN@api.bitbucket.org/2.0/repositories/USERNAME/REPOSITORY_SLUG/downloads -F files=@dist.tar.gz
+   custom: # Pipelines that are triggered manually
+       unitTest:
+         - step:
+             script:
+               - npm --version
+               - npm install -g grunt-cli bower
+               - npm install
+               - bower install --allow-root
+               - grunt unitTest
+       opaTest:
+         - step:
+             script:
+               - npm --version
+               - npm install -g grunt-cli bower
+               - npm install
+               - bower install --allow-root
+               - grunt opaTest

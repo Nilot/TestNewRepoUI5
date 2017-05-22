@@ -1,0 +1,8 @@
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+		controllerName="gitui5repotest.GitUI5RepoTest" xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page title="TestNilot for UP5 upload through git...JustNow...">
+		<content>
+	
+		</content>
+	</Page>
+</core:View>
